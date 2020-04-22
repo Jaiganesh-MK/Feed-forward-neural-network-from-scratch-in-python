@@ -97,6 +97,13 @@ def cost(a2,y):
     m = y.shape[1]
     return (-1/m)*(np.dot(y,np.log(a2.T))+np.dot(1-y,np.log((1-a2).T)))
 
-
-
-
+def predict(updated_parameters,x):
+    w1 = updated_parameters["w1"]
+    w2 = updated_parameters["w2"]
+    b1 = updated_parameters["b1"]
+    b2 = updated_parameters["b2"]
+    z1 = np.dot(w1,x) + b1
+    a1 = relu(z1)
+    z2 = np.dot(w2,a1) + b2
+    a2 = sigmoid(z2)
+    return a2 

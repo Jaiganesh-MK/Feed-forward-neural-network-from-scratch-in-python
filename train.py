@@ -13,3 +13,5 @@ parameters = ffnn.two_layer_model(X.T,y.T,0.0075,1000)
 
 
 
+
+
