@@ -75,24 +75,27 @@ def sigmoid(a):
     return 1/(1 + np.exp(-1*a))
 
 def relu(a):
-    if a>0:
-        return a
-    else:
-        return 0
+    for i in range(0,a.shape[0]):
+        for j in range(0,a.shape[1]):
+            if a[i][j]>0:
+                return a
+            else:
+                return 0
 
 def sigmoid_grad(a):
     return sigmoid(a)(sigmoid(a)-1)
 
 def relu_grad(a):
-    if a>0:
-        return 1
-    else:
-        return 0
+    for i in range(0,a.shape[0]):
+        for j in range(0,a.shape[1]):
+            if a[i][j]>0:
+                return 1
+            else:
+                return 0
 
 def cost(a2,y):
     m = y.shape[1]
-    return (-1/m)*(np.dot(y,np.log(a2.T))+np.dot((1-y),np.log((1-y).T)))
-
+    return (-1/m)*(np.dot(y,np.log(a2.T))+np.dot(1-y,np.log((1-a2).T)))
 
 
 
