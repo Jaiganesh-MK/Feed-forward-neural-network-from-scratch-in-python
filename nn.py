@@ -50,6 +50,27 @@ def back_prop(ff,y,x):
     }
     return grads
 
+def update_parameters(LEARNING_RATE,parameters,grads):
+    w1 = parameters["w1"]
+    w2 = parameters["w2"]
+    b1 = parameters["b1"]
+    b2 = parameters["b2"]
+    dw1 = grads["dw1"]
+    dw2 = grads["dw2"]
+    
+    w1 = w1 - LEARNING_RATE*dw1
+    w2 = w2 - LEARNING_RATE*dw2
+    b1 = b1 - LEARNING_RATE*b1
+    b2 = b2 - LEARNING_RATE*b2
+
+    updated_parameters = {
+        "w1":w1,
+        "w2":w2,
+        "b1":b1,
+        "b2":b2
+    }
+    return updated_parameters
+
 def sigmoid(a):
     return 1/(1 + np.exp(-1*a))
 
